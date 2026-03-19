@@ -1,0 +1,5 @@
+{
+  "name": "YouTube Thumbnail Downloader",
+  "description": "A fast and simple tool to download YouTube thumbnails in high quality.",
+  "requestFramePermissions": []
+}
