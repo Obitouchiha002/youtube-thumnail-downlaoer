@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('Script loaded and DOM ready');
     // DOM Elements
     const urlInput = document.getElementById('url-input');
     const getBtn = document.getElementById('get-btn');
@@ -74,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const videoId = extractVideoId(url);
+        console.log('Extracted Video ID:', videoId);
         
         if (!videoId) {
             showError('Invalid YouTube URL. Please make sure it is a valid video link.');
@@ -165,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', async (e) => {
             if (!currentVideoId) return;
             
-            const quality = e.target.dataset.quality;
+            const quality = e.currentTarget.dataset.quality;
             const url = getThumbnailUrl(currentVideoId, quality);
             
             try {
@@ -183,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.removeChild(a);
                 window.URL.revokeObjectURL(blobUrl);
             } catch (error) {
+                console.error('Download error:', error);
                 // Fallback if fetch fails (CORS)
                 const a = document.createElement('a');
                 a.href = url;
@@ -200,15 +203,15 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', async (e) => {
             if (!currentVideoId) return;
             
-            const quality = e.target.dataset.quality;
+            const quality = e.currentTarget.dataset.quality;
             const url = getThumbnailUrl(currentVideoId, quality);
             
             try {
                 await navigator.clipboard.writeText(url);
-                const originalText = e.target.textContent;
-                e.target.textContent = '✅';
+                const originalText = e.currentTarget.textContent;
+                e.currentTarget.textContent = '✅';
                 setTimeout(() => {
-                    e.target.textContent = originalText;
+                    e.currentTarget.textContent = originalText;
                 }, 2000);
             } catch (err) {
                 console.error('Failed to copy text: ', err);

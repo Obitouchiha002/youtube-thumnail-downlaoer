@@ -467,3 +467,26 @@ button {
     margin-top: 0.5rem;
     opacity: 0.6;
 }
+
+.theme-switch-container-header {
+    display: flex;
+    align-items: center;
+}
+
+.theme-btn-header {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.theme-btn-header:hover {
+    background-color: var(--border);
+    transform: scale(1.1);
+}
