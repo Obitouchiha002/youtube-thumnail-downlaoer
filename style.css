@@ -100,6 +100,28 @@ header {
     gap: 0.5rem;
 }
 
+.theme-switch-container-header {
+    display: flex;
+    align-items: center;
+}
+
+.theme-btn-header {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.theme-btn-header:hover {
+    background-color: var(--bg-color);
+}
+
 #home-btn {
     padding: 0.4rem 0.8rem;
     font-size: 0.875rem;
@@ -183,32 +205,6 @@ button {
     font-size: 0.875rem;
 }
 
-.theme-switch-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-}
-
-.theme-btn {
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    border: 1px solid var(--border);
-    padding: 0.5rem 1.25rem;
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: var(--transition);
-}
-
-.theme-btn:hover {
-    background-color: var(--border);
-    transform: translateY(-2px);
-}
 
 .hidden {
     display: none !important;

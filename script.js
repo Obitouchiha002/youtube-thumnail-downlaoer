@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const sunIcon = document.getElementById('sun-icon');
     const moonIcon = document.getElementById('moon-icon');
-    const themeText = document.getElementById('theme-text');
 
     let currentVideoId = '';
 
@@ -28,12 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
             document.documentElement.setAttribute('data-theme', 'dark');
             sunIcon.style.display = 'block';
             moonIcon.style.display = 'none';
-            if (themeText) themeText.textContent = 'Switch to Light Mode';
         } else {
             document.documentElement.setAttribute('data-theme', 'light');
             sunIcon.style.display = 'none';
             moonIcon.style.display = 'block';
-            if (themeText) themeText.textContent = 'Switch to Dark Mode';
         }
     };
 
@@ -47,11 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (newTheme === 'dark') {
             sunIcon.style.display = 'block';
             moonIcon.style.display = 'none';
-            if (themeText) themeText.textContent = 'Switch to Light Mode';
         } else {
             sunIcon.style.display = 'none';
             moonIcon.style.display = 'block';
-            if (themeText) themeText.textContent = 'Switch to Dark Mode';
         }
     });
 
@@ -59,9 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Extract Video ID from YouTube URL
     const extractVideoId = (url) => {
-        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+        const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=|shorts\/|live\/)|youtu\.be\/)([^"&?\/\s]{11})/i;
         const match = url.match(regExp);
-        return (match && match[2].length === 11) ? match[2] : null;
+        return match ? match[1] : null;
     };
 
     // Get Thumbnail URL based on quality
