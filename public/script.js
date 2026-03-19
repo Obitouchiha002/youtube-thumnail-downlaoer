@@ -203,26 +203,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // Handle Copy Links
-    copyBtns.forEach(btn => {
-        btn.addEventListener('click', async (e) => {
-            if (!currentVideoId) return;
-            
-            const quality = e.currentTarget.dataset.quality;
-            const url = getThumbnailUrl(currentVideoId, quality);
-            
-            try {
-                await navigator.clipboard.writeText(url);
-                const originalText = e.currentTarget.textContent;
-                e.currentTarget.textContent = '✅';
-                setTimeout(() => {
-                    e.currentTarget.textContent = originalText;
-                }, 2000);
-            } catch (err) {
-                console.error('Failed to copy text: ', err);
-                alert('Failed to copy link.');
-            }
-        });
-    });
 });
