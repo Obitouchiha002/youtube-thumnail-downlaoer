@@ -1,3 +1,9 @@
+console.log('Script file is loading...');
+
+window.onerror = function(message, source, lineno, colno, error) {
+    console.error('Global Error:', message, 'at', source, lineno, colno);
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Script loaded and DOM ready');
     // DOM Elements
